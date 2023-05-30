@@ -46,26 +46,37 @@ class Projectile:
         plt.grid(True)
         
         # Mostrar la distancia final en la gráfica
-        ax.annotate(f'Distancia final: {x_f:.2f} m', xy=(x_f, self.h_i - h[-1]),
+        ax.annotate(f'Distancia final: {self.x_f:.2f} m', xy=(self.x_f, self.h_i - h[-1]),
                     xytext=(0, 0.05), 
                 arrowprops=dict(facecolor='black', arrowstyle='->'))
         
         plt.show()
+        
+v_0 = float(input("Digite la velocidad inicial: "))
+h = float(input("Digite la altura: "))
 
-v_0 = float(input("Digite la velocidad inicial "))
-h = float(input("Digite la altura "))
-g = float(input("Digite la gravedad "))
-# Crear una instancia de la clase Projectile
-projectile = Projectile(v_0, h, g)
+def error():
+    while True:
+        try:
+            g = float(input("Digite la gravedad: "))
+            if g == 0:
+                raise ValueError("Error: La gravedad no puede ser cero.")
+            break
+        except ValueError:
+            print("Error: La gravedad debe ser un número distinto de cero. Inténtelo nuevamente.")
 
-# Calcular y mostrar la distancia final
-x_f = projectile.calculate_distance()
-print("Distancia final:", x_f)
+    # Crear una instancia de la clase Projectile
+    projectile = Projectile(v_0, h, g)
 
-# Calcular y mostrar los tiempos
-t1, t2 = projectile.calculate_time()
-print("Tiempo total:", t1)
+    # Calcular y mostrar la distancia final
+    x_f = projectile.calculate_distance()
+    print("Distancia final:", x_f)
 
+    # Calcular y mostrar los tiempos
+    t1, t2 = projectile.calculate_time()
+    print("Tiempo total:", t1)
 
-# Graficar la trayectoria
-projectile.plot_trajectory()
+    # Graficar la trayectoria
+    projectile.plot_trajectory()
+
+error()
