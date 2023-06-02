@@ -24,10 +24,10 @@ class MovimientoDim1:
         Inicializa los atributos del movimiento.
         Solicita al usuario ingresar la posición final, posición inicial, tiempo final y tiempo inicial.
         """
-        self.x_f = str(input("Ingrese la posición final: "))
-        self.x_i = eval(input("Ingrese la posición inicial: "))
-        self.t_f = eval(input("Ingrese el tiempo final: "))
-        self.t_i = eval(input("Ingrese el tiempo inicial: "))
+        self.x_f = str(input("Ingrese la posición final en metros: "))
+        self.x_i = eval(input("Ingrese la posición inicial en metros: "))
+        self.t_f = eval(input("Ingrese el tiempo final en segundos: "))
+        self.t_i = eval(input("Ingrese el tiempo inicial en segundos: "))
 
     def delta_x(self):
         """
@@ -49,7 +49,7 @@ class MovimientoDim1:
         Divide el cambio de posición entre el cambio de tiempo.
         Retorna la velocidad promedio.
         """
-        return self.delta_x() / self.delta_t()
+        print("la velocidad promedio es {0} m/s".format(self.delta_x() / self.delta_t()))
 
     def mensaje_cambio_posicion(self):
         """
@@ -81,7 +81,7 @@ class VelocidadConstante(MovimientoDim1):
         Llama al constructor de la clase padre (MovimientoDim1).
         Calcula la posición final utilizando la fórmula de posición final con velocidad constante.
         """
-        self.v = eval(input("Ingrese la velocidad: "))
+        self.v = eval(input("Ingrese la velocidad en m/s: "))
         super().__init__()
         if self.x_f == "":
             print("ok")
@@ -92,7 +92,7 @@ class VelocidadConstante(MovimientoDim1):
         Genera un mensaje con la posición final.
         Retorna el mensaje formateado.
         """
-        return "La posición final será: {0}".format(self.x_f)
+        return "La posición final será: {0} m".format(self.x_f)
 
     def graficar_movimiento(self):
         """
@@ -111,5 +111,6 @@ class VelocidadConstante(MovimientoDim1):
         plt.show()
 
 movimiento = VelocidadConstante()
+movimiento.v_prom()
 print(movimiento.posicion_final())
 movimiento.graficar_movimiento()

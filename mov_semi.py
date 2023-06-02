@@ -10,11 +10,11 @@ import matplotlib.pyplot as plt
 
 class Projectile:
     """
-    Clase que representa un proyectil en movimiento parabólico.
+    Clase que representa un objeto en movimiento semiparabólico.
 
     Atributos:
-        v_0 (float): Velocidad inicial del proyectil en m/s.
-        h_i (float): Altura inicial desde la cual se lanza el proyectil en metros.
+        v_0 (float): Velocidad inicial del objeto en m/s.
+        h_i (float): Altura inicial desde la cual se lanza el objeto en metros.
         g (float): Aceleración debido a la gravedad en m/s^2.
     """
 
@@ -23,9 +23,9 @@ class Projectile:
         Inicializa una instancia de la clase Projectile.
 
         Args:
-            v_0 (float): Velocidad inicial del proyectil en m/s.
-            h_i (float): Altura inicial desde la cual se lanza el proyectil en metros.
-            g (float): Aceleración debido a la gravedad en m/s^2.
+            v_0 (float): Velocidad inicial
+            h_i (float): Altura inicial 
+            g (float): gravedad
         """
         self.v_0 = v_0
         self.h_i = h_i
@@ -43,10 +43,10 @@ class Projectile:
 
     def calculate_time(self):
         """
-        Calcula el tiempo total de vuelo del proyectil.
+        Calcula el tiempo total de vuelo del objeto.
 
         Returns:
-            float: Tiempo total de vuelo del proyectil en segundos.
+            float: Tiempo total de vuelo del objeto en segundos.
         """
         x_f = self.calculate_distance()
         t1 = x_f / self.v_0
@@ -55,13 +55,13 @@ class Projectile:
 
     def calculate_height(self, t):
         """
-        Calcula la altura del proyectil en un instante de tiempo dado.
+        Calcula la altura del objeto en un instante de tiempo dado.
 
         Args:
             t (float): Instante de tiempo en segundos.
 
         Returns:
-            float: Altura del proyectil en metros en el instante de tiempo dado.
+            float: Altura del objeto en metros en el instante de tiempo dado.
         """
         h = (1 / 2) * self.g * t ** 2
         return h
@@ -122,7 +122,7 @@ def error_gravedad():
 
 def error_v_0():
     """
-    Solicita al usuario que ingrese la velocidad inicial del proyectil.
+    Solicita al usuario que ingrese la velocidad inicial del objeto.
 
     Returns:
         float: Velocidad inicial del proyectil en m/s.
@@ -145,7 +145,7 @@ projectile = Projectile(v_0, h, g)
 
 # Calcular y mostrar la distancia final
 x_f = projectile.calculate_distance()
-print("Distancia final:", x_f)
+print("Distancia final: {0}m".format(x_f))
 
 # Calcular y mostrar los tiempos
 t1, t2 = projectile.calculate_time()
