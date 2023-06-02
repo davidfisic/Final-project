@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun May 28 01:34:55 2023
-
-@author: sebas
-"""
-
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
@@ -173,14 +166,27 @@ class AnimacionMovimientoParabolico:
         plt.grid()
         plt.show()
 
-# Ejemplo de uso
-theta = 45  # Ángulo de lanzamiento en grados
-v0 = 20  # Velocidad inicial en m/s
+def error():
+    while True:
+        try:
+            # Pedir al usuario que ingrese el ángulo y la velocidad inicial
+            theta = float(input("Ingrese el ángulo en grados (°): "))
+            v0 = float(input("Ingrese la velocidad inicial en (m/s): "))
+            
+            # Crear una instancia de MovimientoParabolico con los valores ingresados
+            movimiento_parabolico = MovimientoParabolico(theta, v0)
+            
+            # Crear una instancia de AnimacionMovimientoParabolico y mostrar la animación
+            animacion = AnimacionMovimientoParabolico(movimiento_parabolico)
+            animacion.mostrar_animacion()
 
-movimiento_parabolico = MovimientoParabolico(theta, v0)
-animacion = AnimacionMovimientoParabolico(movimiento_parabolico)
-animacion.mostrar_animacion()
-print(f"y_max: {movimiento_parabolico.y_max()}")
-print(f"x_max: {movimiento_parabolico.x_max()}")
+            # Imprimir los valores de y_max y x_max
+            print(f"y_max: {movimiento_parabolico.y_max()}")
+            print(f"x_max: {movimiento_parabolico.x_max()}")
 
+            break  # Salir del bucle si se ingresaron números válidos
 
+        except ValueError:
+            print("Error: Las entradas deben ser números. Inténtelo nuevamente.")
+
+error()
